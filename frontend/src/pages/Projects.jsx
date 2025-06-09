@@ -73,8 +73,8 @@ export default function Projects() {
           alignItems: "center",
           justifyContent: "center",
           background:
-            "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)",
-          color: "white",
+            "linear-gradient(135deg, var(--background-start) 0%, var(--background-mid) 50%, var(--background-end) 100%)",
+          color: "var(--text-color)",
         }}
       >
         <motion.div
@@ -83,8 +83,8 @@ export default function Projects() {
           style={{
             width: "50px",
             height: "50px",
-            border: "3px solid rgba(102, 126, 234, 0.3)",
-            borderTop: "3px solid #667eea",
+            border: "3px solid rgba(102, 126, 234, 0.3)", // Fixed rgba for loading spinner
+            borderTop: "3px solid var(--primary-color)",
             borderRadius: "50%",
           }}
         />
@@ -97,8 +97,8 @@ export default function Projects() {
       style={{
         minHeight: "100vh",
         background:
-          "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)",
-        color: "white",
+          "linear-gradient(135deg, var(--background-start) 0%, var(--background-mid) 50%, var(--background-end) 100%)",
+        color: "var(--text-color)",
         padding: "2rem 0",
       }}
     >
@@ -127,7 +127,8 @@ export default function Projects() {
                 fontSize: "clamp(2.5rem, 6vw, 4rem)",
                 fontWeight: "700",
                 marginBottom: "1rem",
-                background: "linear-gradient(45deg, #667eea, #764ba2, #f093fb)",
+                background:
+                  "linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--tertiary-color))",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
@@ -174,22 +175,22 @@ export default function Projects() {
                 style={{
                   width: "100%",
                   padding: "12px 20px 12px 50px",
-                  border: "2px solid rgba(255, 255, 255, 0.1)",
+                  border: "2px solid var(--input-border)",
                   borderRadius: "30px",
-                  background: "rgba(255, 255, 255, 0.1)",
+                  background: "var(--input-background)",
                   backdropFilter: "blur(10px)",
-                  color: "white",
+                  color: "var(--text-color)",
                   fontSize: "1rem",
                   outline: "none",
                   transition: "all 0.3s ease",
                 }}
                 onFocus={(e) => {
-                  e.target.style.borderColor = "#667eea";
+                  e.target.style.borderColor = "var(--primary-color)";
                   e.target.style.boxShadow =
-                    "0 0 20px rgba(102, 126, 234, 0.3)";
+                    "0 0 20px rgba(102, 126, 234, 0.3)"; // Fixed rgba for glow
                 }}
                 onBlur={(e) => {
-                  e.target.style.borderColor = "rgba(255, 255, 255, 0.1)";
+                  e.target.style.borderColor = "var(--input-border)";
                   e.target.style.boxShadow = "none";
                 }}
               />
@@ -201,6 +202,7 @@ export default function Projects() {
                   transform: "translateY(-50%)",
                   fontSize: "1.2rem",
                   opacity: 0.6,
+                  color: "var(--text-color)",
                 }}
               >
                 🔍
@@ -228,13 +230,13 @@ export default function Projects() {
                     border: "2px solid",
                     borderColor:
                       filter === status
-                        ? "#667eea"
-                        : "rgba(255, 255, 255, 0.3)",
+                        ? "var(--primary-color)"
+                        : "var(--input-border)",
                     background:
                       filter === status
-                        ? "linear-gradient(45deg, #667eea, #764ba2)"
-                        : "rgba(255, 255, 255, 0.1)",
-                    color: "white",
+                        ? "var(--button-background)"
+                        : "var(--input-background)",
+                    color: "var(--text-color)",
                     cursor: "pointer",
                     fontSize: "0.9rem",
                     fontWeight: "500",
@@ -269,11 +271,11 @@ export default function Projects() {
                   whileHover="hover"
                   transition={{ delay: index * 0.1 }}
                   style={{
-                    background: "rgba(255, 255, 255, 0.1)",
+                    background: "var(--card-background)",
                     backdropFilter: "blur(20px)",
                     borderRadius: "20px",
                     padding: "2rem",
-                    border: "1px solid rgba(255, 255, 255, 0.2)",
+                    border: "1px solid var(--card-border)",
                     position: "relative",
                     overflow: "hidden",
                     cursor: "pointer",
@@ -292,9 +294,9 @@ export default function Projects() {
                       fontWeight: "500",
                       background:
                         project.status === "active"
-                          ? "linear-gradient(45deg, #4ade80, #22c55e)"
-                          : "linear-gradient(45deg, #f97316, #ea580c)",
-                      color: "white",
+                          ? "var(--status-active-background)"
+                          : "var(--status-inactive-background)",
+                      color: "var(--text-color)",
                       textTransform: "capitalize",
                     }}
                   >
@@ -308,7 +310,7 @@ export default function Projects() {
                         fontSize: "1.4rem",
                         fontWeight: "600",
                         marginBottom: "0.5rem",
-                        color: "#667eea",
+                        color: "var(--primary-color)",
                       }}
                     >
                       {project.name}
@@ -344,12 +346,12 @@ export default function Projects() {
                           gap: "0.5rem",
                           padding: "8px 16px",
                           borderRadius: "20px",
-                          background: "rgba(255, 255, 255, 0.1)",
-                          color: "white",
+                          background: "var(--input-background)", // Reusing input background
+                          color: "var(--text-color)",
                           textDecoration: "none",
                           fontSize: "0.9rem",
                           fontWeight: "500",
-                          border: "1px solid rgba(255, 255, 255, 0.2)",
+                          border: "1px solid var(--input-border)", // Reusing input border
                           transition: "all 0.3s ease",
                         }}
                         onClick={(e) => e.stopPropagation()}
@@ -368,8 +370,7 @@ export default function Projects() {
                       left: 0,
                       right: 0,
                       bottom: 0,
-                      background:
-                        "linear-gradient(45deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1))",
+                      background: "var(--card-glow-overlay)",
                       opacity: 0,
                       transition: "opacity 0.3s ease",
                       pointerEvents: "none",
@@ -392,31 +393,36 @@ export default function Projects() {
                 opacity: 0.6,
               }}
             >
-              <div style={{ fontSize: "3rem", marginBottom: "1rem" }}>🔍</div>
-              <h3 style={{ fontSize: "1.5rem", marginBottom: "0.5rem" }}>
+              <div
+                style={{
+                  fontSize: "3rem",
+                  marginBottom: "1rem",
+                  color: "var(--text-color)",
+                }}
+              >
+                🔍
+              </div>
+              <h3
+                style={{
+                  fontSize: "1.5rem",
+                  marginBottom: "0.5rem",
+                  color: "var(--text-color)",
+                }}
+              >
                 No projects found
               </h3>
-              <p>Try adjusting your search or filter criteria</p>
+              <p style={{ color: "var(--text-color)" }}>
+                Try adjusting your search or filter criteria
+              </p>
             </motion.div>
           )}
         </motion.div>
       </div>
 
       <style jsx>{`
-        @keyframes gradient {
-          0% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
-          100% {
-            background-position: 0% 50%;
-          }
-        }
-
+        /* Keyframes are global, so no need to redefine if already in index.css */
         input::placeholder {
-          color: rgba(255, 255, 255, 0.6);
+          color: var(--placeholder-color);
         }
       `}</style>
     </div>

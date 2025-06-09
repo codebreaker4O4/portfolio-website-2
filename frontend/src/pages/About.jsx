@@ -22,7 +22,7 @@ export default function About() {
   };
 
   const highlightStyle = {
-    color: "#667eea", // Main highlight color from Projects.jsx
+    color: "var(--primary-color)", // Use primary color variable
     fontWeight: "600",
   };
 
@@ -31,11 +31,11 @@ export default function About() {
       style={{
         minHeight: "100vh",
         background:
-          "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)", // Consistent background
-        color: "white",
+          "linear-gradient(135deg, var(--background-start) 0%, var(--background-mid) 50%, var(--background-end) 100%)",
+        color: "var(--text-color)",
         padding: "4rem 0",
         display: "flex",
-        alignItems: "flex-start", // Align items to the top for longer content
+        alignItems: "flex-start",
         justifyContent: "center",
       }}
     >
@@ -47,7 +47,7 @@ export default function About() {
           maxWidth: "900px",
           margin: "0 auto",
           padding: "2rem",
-          textAlign: "left", // Left-align for better readability of text sections
+          textAlign: "left",
         }}
       >
         {/* Header Section */}
@@ -63,7 +63,8 @@ export default function About() {
               fontSize: "clamp(2.8rem, 7vw, 4.2rem)",
               fontWeight: "700",
               marginBottom: "1rem",
-              background: "linear-gradient(45deg, #667eea, #764ba2, #f093fb)", // Gradient text from Projects.jsx
+              background:
+                "linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--tertiary-color))",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               backgroundClip: "text",
@@ -94,8 +95,8 @@ export default function About() {
               fontSize: "clamp(1.8rem, 4vw, 2.2rem)",
               fontWeight: "600",
               marginBottom: "1.5rem",
-              color: "#667eea",
-              borderBottom: "2px solid #667eea",
+              color: "var(--primary-color)",
+              borderBottom: "2px solid var(--primary-color)",
               paddingBottom: "0.5rem",
               display: "inline-block",
             }}
@@ -128,15 +129,15 @@ export default function About() {
           </p>
         </motion.div>
 
-        {/* My Approach Section */}
+        {/* My Philosophy & Approach Section */}
         <motion.div variants={itemVariants} style={{ marginBottom: "2.5rem" }}>
           <h2
             style={{
               fontSize: "clamp(1.8rem, 4vw, 2.2rem)",
               fontWeight: "600",
               marginBottom: "1.5rem",
-              color: "#764ba2", // Secondary highlight color
-              borderBottom: "2px solid #764ba2",
+              color: "var(--secondary-color)",
+              borderBottom: "2px solid var(--secondary-color)",
               paddingBottom: "0.5rem",
               display: "inline-block",
             }}
@@ -175,8 +176,8 @@ export default function About() {
               fontSize: "clamp(1.8rem, 4vw, 2.2rem)",
               fontWeight: "600",
               marginBottom: "1.5rem",
-              color: "#f093fb", // Tertiary highlight color
-              borderBottom: "2px solid #f093fb",
+              color: "var(--tertiary-color)",
+              borderBottom: "2px solid var(--tertiary-color)",
               paddingBottom: "0.5rem",
               display: "inline-block",
             }}
@@ -194,8 +195,6 @@ export default function About() {
             ].map((skill, index) => (
               <motion.li
                 key={index}
-                // Each list item can also animate if desired, or use parent's stagger
-                // variants={itemVariants}
                 style={{
                   fontSize: "1.1rem",
                   opacity: 0.9,
@@ -210,13 +209,12 @@ export default function About() {
                     position: "absolute",
                     left: 0,
                     top: "2px",
-                    color: "#667eea",
+                    color: "var(--primary-color)",
                     fontSize: "1.2em",
                   }}
                 >
                   ▹
                 </span>{" "}
-                {/* Custom bullet */}
                 {skill}
               </motion.li>
             ))}
@@ -236,7 +234,7 @@ export default function About() {
             <a
               href="/projects"
               style={{
-                color: "#667eea",
+                color: "var(--primary-color)",
                 textDecoration: "none",
                 fontWeight: "500",
               }}
@@ -247,7 +245,7 @@ export default function About() {
             <a
               href="/contact"
               style={{
-                color: "#667eea",
+                color: "var(--primary-color)",
                 textDecoration: "none",
                 fontWeight: "500",
               }}
@@ -259,19 +257,8 @@ export default function About() {
         </motion.div>
       </motion.div>
 
-      {/* Keyframes for gradient animation (if not defined globally) */}
       <style jsx>{`
-        @keyframes gradient {
-          0% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
-          100% {
-            background-position: 0% 50%;
-          }
-        }
+        /* Keyframes are global, so no need to redefine if already in index.css */
         /* Optional: Style for links in the conclusion */
         a:hover {
           text-decoration: underline !important;

@@ -70,19 +70,19 @@ export default function Contact() {
   const inputBaseStyle = {
     width: "100%",
     padding: "15px 20px",
-    border: "2px solid rgba(255, 255, 255, 0.2)",
+    border: "2px solid var(--input-border)",
     borderRadius: "10px",
-    background: "rgba(255, 255, 255, 0.05)",
-    backdropFilter: "blur(8px)", // Subtle blur for input background
-    color: "white",
+    background: "var(--input-background)",
+    backdropFilter: "blur(8px)",
+    color: "var(--text-color)",
     fontSize: "1rem",
     outline: "none",
     transition: "all 0.3s ease",
   };
 
   const inputFocusStyle = {
-    borderColor: "#667eea",
-    boxShadow: "0 0 15px rgba(102, 126, 234, 0.3)",
+    borderColor: "var(--primary-color)",
+    boxShadow: "0 0 15px rgba(102, 126, 234, 0.3)", // Fixed rgba for glow
   };
 
   const labelStyle = {
@@ -91,7 +91,7 @@ export default function Contact() {
     fontSize: "0.95rem",
     opacity: 0.85,
     fontWeight: "500",
-    color: "rgba(255, 255, 255, 0.8)",
+    color: "var(--text-color)",
   };
 
   return (
@@ -99,9 +99,9 @@ export default function Contact() {
       style={{
         minHeight: "100vh",
         background:
-          "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)", // Consistent background
-        color: "white",
-        padding: "4rem 1rem", // Added horizontal padding for smaller screens
+          "linear-gradient(135deg, var(--background-start) 0%, var(--background-mid) 50%, var(--background-end) 100%)",
+        color: "var(--text-color)",
+        padding: "4rem 1rem",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -113,14 +113,14 @@ export default function Contact() {
         animate="visible"
         style={{
           maxWidth: "700px",
-          width: "100%", // Take full width up to maxWidth
+          width: "100%",
           margin: "0 auto",
-          padding: "2.5rem 3rem", // Adjusted padding
-          background: "rgba(30, 41, 59, 0.5)", // Darker, less transparent card background for better contrast
+          padding: "2.5rem 3rem",
+          background: "var(--form-card-background)",
           borderRadius: "20px",
           backdropFilter: "blur(12px)",
-          border: "1px solid rgba(255, 255, 255, 0.1)",
-          boxShadow: "0 10px 35px rgba(0, 0, 0, 0.25)",
+          border: "1px solid var(--form-card-border)",
+          boxShadow: "0 10px 35px rgba(0, 0, 0, 0.25)", // Fixed rgba for shadow
         }}
       >
         {/* Header Section */}
@@ -128,15 +128,16 @@ export default function Contact() {
           variants={itemVariants}
           style={{
             textAlign: "center",
-            marginBottom: "3rem", // Increased margin
+            marginBottom: "3rem",
           }}
         >
           <h1
             style={{
               fontSize: "clamp(2.5rem, 6vw, 3.5rem)",
               fontWeight: "700",
-              marginBottom: "0.75rem", // Adjusted margin
-              background: "linear-gradient(45deg, #667eea, #764ba2, #f093fb)", // Consistent gradient text
+              marginBottom: "0.75rem",
+              background:
+                "linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--tertiary-color))",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               backgroundClip: "text",
@@ -163,7 +164,6 @@ export default function Contact() {
         <motion.form onSubmit={handleSubmit} variants={itemVariants}>
           <div style={{ marginBottom: "1.75rem" }}>
             {" "}
-            {/* Increased spacing */}
             <label htmlFor="name" style={labelStyle}>
               Full Name
             </label>
@@ -199,7 +199,6 @@ export default function Contact() {
 
           <div style={{ marginBottom: "2.25rem" }}>
             {" "}
-            {/* Increased spacing */}
             <label htmlFor="message" style={labelStyle}>
               Your Message
             </label>
@@ -225,24 +224,24 @@ export default function Contact() {
             disabled={submissionStatus.isSubmitting}
             style={{
               width: "100%",
-              padding: "16px 22px", // Slightly larger button
+              padding: "16px 22px",
               borderRadius: "10px",
               border: "none",
               background: submissionStatus.isSubmitting
-                ? "rgba(100, 116, 139, 0.8)" // Muted color for disabled state
-                : "linear-gradient(45deg, #667eea, #764ba2)",
-              color: "white",
-              fontSize: "1.15rem", // Slightly larger font
+                ? "rgba(100, 116, 139, 0.8)" // Fixed rgba for disabled state
+                : "var(--button-background)",
+              color: "var(--text-color)",
+              fontSize: "1.15rem",
               fontWeight: "600",
               cursor: submissionStatus.isSubmitting ? "not-allowed" : "pointer",
               transition: "all 0.3s ease",
-              boxShadow: "0 5px 15px rgba(0, 0, 0, 0.15)",
+              boxShadow: "0 5px 15px rgba(0, 0, 0, 0.15)", // Fixed rgba for shadow
             }}
             whileHover={{
               scale: submissionStatus.isSubmitting ? 1 : 1.03,
               boxShadow: submissionStatus.isSubmitting
                 ? "0 5px 15px rgba(0, 0, 0, 0.15)"
-                : "0 7px 25px rgba(102, 126, 234, 0.35)",
+                : "var(--button-hover-shadow)",
             }}
             whileTap={{ scale: submissionStatus.isSubmitting ? 1 : 0.97 }}
           >
@@ -261,13 +260,15 @@ export default function Contact() {
                 padding: "12px 15px",
                 borderRadius: "8px",
                 background: submissionStatus.isError
-                  ? "rgba(239, 68, 68, 0.15)"
-                  : "rgba(34, 197, 94, 0.15)", // Using Tailwind-like colors for error/success bg
-                color: submissionStatus.isError ? "#fca5a5" : "#a7f3d0", // Lighter text colors
+                  ? "var(--error-background)"
+                  : "var(--success-background)",
+                color: submissionStatus.isError
+                  ? "var(--error-text)"
+                  : "var(--success-text)",
                 border: `1px solid ${
                   submissionStatus.isError
-                    ? "rgba(239, 68, 68, 0.3)"
-                    : "rgba(34, 197, 94, 0.3)"
+                    ? "var(--error-border)"
+                    : "var(--success-border)"
                 }`,
               }}
             >
@@ -278,39 +279,8 @@ export default function Contact() {
       </motion.div>
 
       <style jsx>{`
-        @keyframes gradient {
-          /* For the H1 gradient animation */
-          0% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
-          100% {
-            background-position: 0% 50%;
-          }
-        }
-        /* Improved Autofill Styles */
-        input:-webkit-autofill,
-        input:-webkit-autofill:hover,
-        input:-webkit-autofill:focus,
-        textarea:-webkit-autofill,
-        textarea:-webkit-autofill:hover,
-        textarea:-webkit-autofill:focus,
-        select:-webkit-autofill,
-        select:-webkit-autofill:hover,
-        select:-webkit-autofill:focus {
-          -webkit-text-fill-color: white !important; /* Ensure text is white */
-          -webkit-box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0.05) inset !important; /* Match input background */
-          transition: background-color 5000s ease-in-out 0s !important;
-          background-clip: content-box !important; /* Fix for some browsers showing white corners */
-          caret-color: white !important;
-        }
-        /* Placeholder styling */
-        ::placeholder {
-          color: rgba(255, 255, 255, 0.45); /* Slightly lighter placeholder */
-          opacity: 1; /* Firefox */
-        }
+        /* Keyframes are global, so no need to redefine if already in index.css */
+        /* Autofill and placeholder styles are now global in index.css */
       `}</style>
     </div>
   );

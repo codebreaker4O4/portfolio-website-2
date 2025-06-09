@@ -50,7 +50,7 @@ export default function Home() {
   const buttonVariants = {
     hover: {
       scale: 1.05,
-      boxShadow: "0 10px 25px rgba(100, 108, 255, 0.3)",
+      boxShadow: "var(--button-hover-shadow)",
       transition: { duration: 0.3 },
     },
     tap: { scale: 0.95 },
@@ -63,8 +63,9 @@ export default function Home() {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-        color: "white",
+        background:
+          "linear-gradient(135deg, var(--background-start) 0%, var(--background-mid) 50%, var(--background-end) 100%)",
+        color: "var(--text-color)",
         textAlign: "center",
         position: "relative",
         overflow: "hidden",
@@ -103,7 +104,8 @@ export default function Home() {
               fontSize: "clamp(2.5rem, 8vw, 4.5rem)",
               fontWeight: "700",
               marginBottom: "1rem",
-              background: "linear-gradient(45deg, #fff, #e0e7ff)",
+              background:
+                "linear-gradient(45deg, var(--text-color), var(--text-color))" /* Using text-color for gradient */,
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               backgroundClip: "text",
@@ -120,15 +122,15 @@ export default function Home() {
             Hi, I'm a{" "}
             <span
               style={{
-                color: "#60f5ff",
-                textShadow: "0 0 20px rgba(96, 245, 255, 0.5)",
+                color: "var(--primary-color)" /* Using primary color */,
+                textShadow: "0 0 20px rgba(96, 245, 255, 0.5)", // Fixed rgba for glow
               }}
             >
               {currentText}
               <motion.span
                 animate={{ opacity: [1, 0] }}
                 transition={{ duration: 0.8, repeat: Infinity }}
-                style={{ color: "#fff" }}
+                style={{ color: "var(--text-color)" }}
               >
                 |
               </motion.span>
@@ -166,11 +168,11 @@ export default function Home() {
             whileHover="hover"
             whileTap="tap"
             style={{
-              background: "rgba(255, 255, 255, 0.1)",
-              border: "2px solid rgba(255, 255, 255, 0.3)",
+              background: "rgba(255, 255, 255, 0.1)", // Fixed rgba for button background
+              border: "2px solid rgba(255, 255, 255, 0.3)", // Fixed rgba for button border
               padding: "12px 24px",
               borderRadius: "30px",
-              color: "white",
+              color: "var(--text-color)",
               fontSize: "1.1rem",
               fontWeight: "500",
               cursor: "pointer",
@@ -187,15 +189,15 @@ export default function Home() {
             whileHover="hover"
             whileTap="tap"
             style={{
-              background: "linear-gradient(45deg, #667eea, #764ba2)",
+              background: "var(--button-background)",
               border: "none",
               padding: "12px 24px",
               borderRadius: "30px",
-              color: "white",
+              color: "var(--text-color)",
               fontSize: "1.1rem",
               fontWeight: "500",
               cursor: "pointer",
-              boxShadow: "0 4px 15px rgba(0, 0, 0, 0.2)",
+              boxShadow: "0 4px 15px rgba(0, 0, 0, 0.2)", // Fixed rgba for shadow
             }}
             onClick={() => (window.location.href = "/contact")}
           >

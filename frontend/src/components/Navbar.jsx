@@ -1,11 +1,13 @@
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
+import { useTheme } from "../ThemeContext.jsx"; // Import useTheme
 
 export default function Navbar() {
   const location = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme(); // Use the theme context
 
   useEffect(() => {
     const handleScroll = () => {
@@ -71,14 +73,14 @@ export default function Navbar() {
           zIndex: 1000,
           padding: "1rem 2rem",
           background: isScrolled
-            ? "rgba(26, 26, 26, 0.95)"
-            : "rgba(26, 26, 26, 0.8)",
+            ? "var(--navbar-scrolled-background)"
+            : "var(--navbar-background)",
           backdropFilter: "blur(20px)",
           borderBottom: isScrolled
-            ? "1px solid rgba(255, 255, 255, 0.1)"
+            ? "1px solid var(--navbar-border-bottom)"
             : "none",
           transition: "all 0.3s ease",
-          boxShadow: isScrolled ? "0 8px 32px rgba(0, 0, 0, 0.3)" : "none",
+          boxShadow: isScrolled ? "var(--navbar-shadow)" : "none",
         }}
       >
         <div
@@ -97,7 +99,8 @@ export default function Navbar() {
               style={{
                 fontSize: "1.5rem",
                 fontWeight: "700",
-                background: "linear-gradient(45deg, #667eea, #764ba2)",
+                background:
+                  "linear-gradient(45deg, var(--primary-color), var(--secondary-color))",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
@@ -131,7 +134,10 @@ export default function Navbar() {
                 <Link
                   to={item.path}
                   style={{
-                    color: location.pathname === item.path ? "#667eea" : "#fff",
+                    color:
+                      location.pathname === item.path
+                        ? "var(--primary-color)"
+                        : "var(--text-color)",
                     textDecoration: "none",
                     fontSize: "1rem",
                     fontWeight: "500",
@@ -142,11 +148,11 @@ export default function Navbar() {
                     borderRadius: "25px",
                     background:
                       location.pathname === item.path
-                        ? "rgba(102, 126, 234, 0.1)"
+                        ? "rgba(102, 126, 234, 0.1)" // Still using a fixed rgba for active background for specific glow
                         : "transparent",
                     border:
                       location.pathname === item.path
-                        ? "1px solid rgba(102, 126, 234, 0.3)"
+                        ? "1px solid rgba(102, 126, 234, 0.3)" // Still using a fixed rgba for active border
                         : "1px solid transparent",
                     transition: "all 0.3s ease",
                   }}
@@ -173,8 +179,9 @@ export default function Navbar() {
                       width: "6px",
                       height: "6px",
                       borderRadius: "50%",
-                      background: "linear-gradient(45deg, #667eea, #764ba2)",
-                      boxShadow: "0 0 10px rgba(102, 126, 234, 0.6)",
+                      background:
+                        "linear-gradient(45deg, var(--primary-color), var(--secondary-color))",
+                      boxShadow: "0 0 10px rgba(102, 126, 234, 0.6)", // Fixed rgba for glow
                     }}
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
@@ -189,8 +196,8 @@ export default function Navbar() {
               whileHover={{ scale: 1.1, rotate: 180 }}
               whileTap={{ scale: 0.9 }}
               style={{
-                background: "rgba(255, 255, 255, 0.1)",
-                border: "1px solid rgba(255, 255, 255, 0.2)",
+                background: "rgba(255, 255, 255, 0.1)", // Fixed rgba for button background
+                border: "1px solid rgba(255, 255, 255, 0.2)", // Fixed rgba for button border
                 borderRadius: "50%",
                 width: "40px",
                 height: "40px",
@@ -199,15 +206,12 @@ export default function Navbar() {
                 justifyContent: "center",
                 cursor: "pointer",
                 fontSize: "1.2rem",
-                color: "#fff",
+                color: "var(--text-color)",
                 backdropFilter: "blur(10px)",
               }}
-              onClick={() => {
-                // Theme toggle functionality can be added here
-                console.log("Theme toggle clicked");
-              }}
+              onClick={toggleTheme}
             >
-              🌙
+              {theme === "dark" ? "☀️" : "🌙"}{" "}
             </motion.button>
 
             {/* Mobile menu button */}
@@ -217,14 +221,15 @@ export default function Navbar() {
               style={{
                 display: window.innerWidth <= 768 ? "flex" : "none",
                 background: "transparent",
-                border: "2px solid rgba(255, 255, 255, 0.3)",
-                borderRadius: "8px",
-                padding: "8px",
-                cursor: "pointer",
-                color: "#fff",
-                fontSize: "1.2rem",
+                border: "2px solid rgba(255, 255, 255, 0.3)", // Fixed rgba for border
+                borderRadius: "50%",
+                width: "40px",
+                height: "40px",
                 alignItems: "center",
                 justifyContent: "center",
+                cursor: "pointer",
+                fontSize: "1.2rem",
+                color: "var(--text-color)",
               }}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
@@ -251,11 +256,11 @@ export default function Navbar() {
                 top: "100%",
                 left: 0,
                 right: 0,
-                background: "rgba(26, 26, 26, 0.98)",
+                background: "var(--navbar-background)", // Using navbar background
                 backdropFilter: "blur(20px)",
-                borderTop: "1px solid rgba(255, 255, 255, 0.1)",
+                borderTop: "1px solid var(--navbar-border-bottom)", // Using navbar border
                 padding: "1rem",
-                boxShadow: "0 8px 32px rgba(0, 0, 0, 0.3)",
+                boxShadow: "var(--navbar-shadow)", // Using navbar shadow
               }}
             >
               {navItems.map((item) => (
@@ -269,7 +274,9 @@ export default function Navbar() {
                     onClick={() => setIsMobileMenuOpen(false)}
                     style={{
                       color:
-                        location.pathname === item.path ? "#667eea" : "#fff",
+                        location.pathname === item.path
+                          ? "var(--primary-color)"
+                          : "var(--text-color)",
                       textDecoration: "none",
                       fontSize: "1.1rem",
                       fontWeight: "500",
@@ -280,9 +287,9 @@ export default function Navbar() {
                       borderRadius: "12px",
                       background:
                         location.pathname === item.path
-                          ? "rgba(102, 126, 234, 0.1)"
-                          : "rgba(255, 255, 255, 0.05)",
-                      border: "1px solid rgba(255, 255, 255, 0.1)",
+                          ? "rgba(102, 126, 234, 0.1)" // Fixed rgba for active background
+                          : "rgba(255, 255, 255, 0.05)", // Fixed rgba for inactive background
+                      border: "1px solid rgba(255, 255, 255, 0.1)", // Fixed rgba for border
                       transition: "all 0.3s ease",
                     }}
                   >
