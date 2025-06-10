@@ -141,16 +141,18 @@ export default function Home() {
         <motion.div variants={itemVariants}>
           <p
             style={{
-              fontSize: "clamp(1.1rem, 3vw, 1.5rem)",
+              fontSize: "clamp(1rem, 2.2vw, 1.3rem)",
               marginBottom: "2rem",
-              opacity: 0.9,
-              lineHeight: 1.6,
+              opacity: 0.85,
+              lineHeight: 1.5,
               fontWeight: "300",
             }}
           >
-            I build full-stack applications with Python & React.
+            I love turning ideas into solid backend systems using Python &
+            Flask.
             <br />
-            Passionate about creating seamless user experiences.
+            Whether it's an API, microservice, or cloud integration — I build
+            things that just work.
           </p>
         </motion.div>
 

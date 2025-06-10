@@ -111,21 +111,20 @@ export default function About() {
               marginBottom: "1rem",
             }}
           >
-            I'm a dedicated{" "}
-            <span style={highlightStyle}>Full-Stack Developer</span> with a
-            profound passion for building intuitive, efficient, and impactful
-            web applications. My journey in technology is driven by an
-            insatiable curiosity for problem-solving and a commitment to
-            crafting software that offers real-world value and seamless user
-            experiences.
+            Hey there! I’m a backend developer who enjoys solving problems with{" "}
+            <span style={highlightStyle}>Python</span> and building systems that
+            just work. I spend most of my time working with{" "}
+            <span style={highlightStyle}>Flask</span> and cloud tools to create
+            APIs, microservices, and backend systems that are both solid and
+            scalable.
           </p>
           <p style={{ fontSize: "1.1rem", opacity: 0.9, lineHeight: 1.7 }}>
-            My core expertise lies in developing robust backend systems,
-            primarily with <span style={highlightStyle}>Python</span> and the{" "}
-            <span style={highlightStyle}>Flask</span> framework, complemented by
-            dynamic and responsive frontends built with{" "}
-            <span style={highlightStyle}>React</span>. I enjoy the challenge of
-            transforming complex ideas into elegant digital solutions.
+            I’ve built projects like an AI-powered resume evaluator, a
+            microservice for image editing and storage, and backends for design
+            collaboration tools. I enjoy writing clean code, making systems run
+            faster, and occasionally automating boring stuff just for fun. When
+            needed, I also build out frontends in{" "}
+            <span style={highlightStyle}>React</span> to complete the picture.
           </p>
         </motion.div>
 
@@ -152,20 +151,15 @@ export default function About() {
               marginBottom: "1rem",
             }}
           >
-            I believe that exceptional software is born from a synergy of{" "}
-            <span style={highlightStyle}>clean, maintainable code</span>,{" "}
-            <span style={highlightStyle}>thoughtful, user-centric design</span>,
-            and effective <span style={highlightStyle}>problem-solving</span>.
-            My development process emphasizes not just functionality, but also
-            scalability and the overall user experience.
+            I believe good software feels invisible — it just does what you
+            need, when you need it. That’s why I focus on writing code that’s
+            not only functional, but also easy to maintain and scale.
           </p>
           <p style={{ fontSize: "1.1rem", opacity: 0.9, lineHeight: 1.7 }}>
-            The ever-evolving nature of technology excites me. I am a firm
-            believer in <span style={highlightStyle}>continuous learning</span>{" "}
-            and actively seek out new technologies, development methodologies,
-            and best practices. This commitment helps me refine my skills,
-            innovate, and deliver solutions that are both current and
-            future-ready.
+            I'm a big believer in{" "}
+            <span style={highlightStyle}>continuous learning</span>. Whether
+            it’s a new tool, framework, or approach, I enjoy staying up to date
+            and experimenting with better ways to build and ship software.
           </p>
         </motion.div>
 
@@ -186,12 +180,16 @@ export default function About() {
           </h2>
           <ul style={{ listStyle: "none", paddingLeft: 0 }}>
             {[
-              "Full-Stack Web Development (Python/Flask, React/JavaScript)",
-              "RESTful API Design & Implementation",
-              "Database Architecture & Management (e.g., PostgreSQL, MongoDB)",
-              "Responsive UI/UX Design Principles",
-              "Version Control & Collaborative Development (Git/GitHub)",
-              "Agile Project Management Methodologies",
+              "Backend Development with Python (Flask, FastAPI)",
+              "RESTful API Design and Integration",
+              "Cloud Storage & Services (Azure Blob Storage)",
+              "Image Processing & File Handling (Pillow, MIME types)",
+              "Database Design & Querying (PostgreSQL, MongoDB)",
+              "Authentication & Authorization (JWT, OAuth basics)",
+              "CI/CD Pipelines & GitHub Workflows",
+              "Frontend Integration using React & Fetch API",
+              "Clean Code Practices & Modular Architecture",
+              "Debugging, Logging, and API Testing (Postman, Pytest)",
             ].map((skill, index) => (
               <motion.li
                 key={index}
